@@ -1,42 +1,37 @@
 import random
+ 
+Randomint = random.randint(1, 15)
+RealList = []
+double = set()
+ 
+for i in range(1,Randomint+1):
+    RealList.append(i)
+    double.add(i)
+ 
+a = random.randint(1, len(RealList)) 
+del RealList[a-1]
 
-gen = random.randint(1,16)
-itlist = set()
-ittlist = set()
+print(RealList)
+d = 0
 
-for i in range(1, gen+1):
-    itlist.add(i)
+for l in double:
+    if l not in RealList:
+        d += l
 
-    ittlist.add(i)
+RealList.append(d)
 
+n = len(RealList)
+ 
+for c in range(n):
 
+    min_index = c
 
-print(itlist)
-print(ittlist)
+    for j in range(c+1, n):
 
-itlist.remove(random.randrange(len(itlist)))
+        if RealList[j] < RealList[min_index]:
 
-print(itlist)
+            min_index = j
 
-print(ittlist)
+    RealList[c], RealList[min_index] = RealList[min_index], RealList[c]
 
-
-dif = 0
-for i in ittlist:
-    if i not in itlist:
-        dif = i
-
-print(dif)
-print(itlist) 
-print(ittlist)
-
-itlist.add(dif)
-
-print(itlist)
-
-a = list(itlist)
-
-print(a)
-
-
-
+print(RealList)

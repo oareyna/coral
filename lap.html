@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime</title>
+</head>
+<body style="text-align: center; background-color: blueviolet;">
+    <br><br><br>
+    <h1>
+    <form id="form">
+        
+        <label >Enter a number:</label>
+        <input type="text" id = "num">
+        <button type="submit" id="submit">Submit</button>
+    
+    </form>
+    </h1>
+    <p id = "p"></p>
+    <script>
+        let form = document.getElementById("form")
+        let p = document.getElementById("p")
+
+        form.addEventListener("submit", function(event){
+            let num = document.getElementById("num").value
+            event.preventDefault()
+
+            a = 0
+
+            if (num == 0 || num == 1) {
+                    a += 3
+                }
+            for (i=1; i<=num; i++) {
+                
+                
+                if (num % i == 0) {
+
+                    a += 1
+
+                }
+
+            }
+            if (a < 3) {
+                    p.innerHTML = "Prime"
+                    alert("Prime")
+                }
+            else {
+                p.innerHTML = "Not prime"
+                alert("Not prime")
+            }
+            
+
+        })
+
+        
+    </script>
+</body>
+</html>

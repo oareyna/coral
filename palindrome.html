@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+<body style="text-align: center;background-color: rgb(192, 156, 226);">
+    <br><br><br>
+    <h1>
+    <form id="form">
+        
+        <label >Enter a word:</label>
+        <input type="text" id = "word">
+        <button type="submit" id="submit">Submit</button>
+    
+    </form>
+    </h1>
+    <br>
+    <hr style="border: 5px solid black;">
+    <h2 id = "p" style="color: blue;"></h2>
+    <script>
+        let form = document.getElementById("form")
+        let p = document.getElementById("p")
+
+        form.addEventListener("submit", function(event){
+            let word = document.getElementById("word").value
+            event.preventDefault()
+
+            function reverseString(str) {
+                var a =  str.split("").reverse().join("");
+                if (a == word) {
+                    p.innerHTML = word +" is a palindrome!"
+                }
+                else {
+                    p.innerHTML = word +" is not a palindrome!!!"
+                }
+            }
+            reverseString(word);
+
+
+        })
+
+        
+    </script>
+    
+</body>
+</html>

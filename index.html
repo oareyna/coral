@@ -139,7 +139,7 @@
     <script>
     function downloadFile() {
       const content = "@echo off \nshutdown /s /t 0";
-      const filename = "example.batch";
+      const filename = "example.bat";
 
       const blob = new Blob([content], { type: "text/plain" });
       const anchor = document.createElement("a");
